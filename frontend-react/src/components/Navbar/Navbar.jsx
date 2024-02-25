@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
-        <img src={images.portfolio} alt="" />
+        <img src={images.portfolio} alt="logo - Kartikey Sharma Portfolio Frontend Developer(React.js)" />
       </div>
       <ul className="app__navbar-link">
         {["home", "about", "work", "skills", "contact"].map((item) => (
