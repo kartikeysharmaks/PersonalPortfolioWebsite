@@ -3,4 +3,4 @@ This is the git repository of my Personal PortFolio Website created using React 
 
  ## Check it out :
 
- ### https://kartikeysharmaks.netlify.app
+ ### https://kartikeysharmaks.vercel.app
