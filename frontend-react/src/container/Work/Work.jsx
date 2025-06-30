@@ -73,6 +73,7 @@ function Work() {
                 decoding="async"
                 width="300"
                 height="200"
+                crossorigin="anonymous"
               />
               <motion.div
                 whileHover={{ opacity: [0, 1] }}

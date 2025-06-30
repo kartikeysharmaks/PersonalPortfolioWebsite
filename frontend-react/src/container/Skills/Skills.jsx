@@ -39,6 +39,7 @@ const Skills = () => {
                   decoding="async"
                   width="40"
                   height="40"
+                  crossorigin="anonymous"
                 />
               </div>
               <p className="p-text">{skill.name}</p>

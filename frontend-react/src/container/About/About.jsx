@@ -34,6 +34,7 @@ function About() {
               width="250"
               height="250"
               className="about-img"
+              crossorigin="anonymous"
             />
             <h3 className="bold-text">{about.title}</h3>
             <p className="p-text">{about.description}</p>

@@ -32,6 +32,7 @@ const Testimonial = () => {
             decoding="async"
             width="100"
             height="100"
+            crossorigin="anonymous"
           />
           <div className="app__testimonial-content">
             <p className="p-text">"{testimonials[currentIndex].feedback}"</p>
@@ -75,6 +76,7 @@ const Testimonial = () => {
               decoding="async"
               width="100"
               height="50"
+              crossorigin="anonymous"
             />
           </div>
         ))}

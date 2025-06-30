@@ -54,7 +54,6 @@ function Header() {
           fetchpriority="high"
         />
       </section>
-
       <section
         className="app__header-circles"
         aria-label="Technologies I work with"
