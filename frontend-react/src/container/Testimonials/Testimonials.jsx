@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { Appwrap, Motionwrap } from "../../Wrapper";
 import { urlFor, client } from "../../client";
@@ -9,79 +9,77 @@ const Testimonial = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [brands, setBrands] = useState([]);
 
-  const handleClick = (index) => {
-    setCurrentIndex(index);
-  };
-
   useEffect(() => {
     const query = '*[_type == "testimonials"]';
     const brandsQuery = '*[_type == "brands"]';
-    client.fetch(query).then((data) => {
-      setTestimonials(data);
-    });
-    client.fetch(brandsQuery).then((data) => {
-      setBrands(data);
-    });
+    client.fetch(query).then(setTestimonials);
+    client.fetch(brandsQuery).then(setBrands);
   }, []);
 
-  return (
-    <>
-      {testimonials.length && (
-        <>
-          <div className="app__testimonial-item app__flex">
-            <img
-              src={urlFor(testimonials[currentIndex].imgurl)}
-              alt={testimonials[currentIndex].name}
-            />
-            <div className="app__testimonial-content">
-              <p className="p-text">{testimonials[currentIndex].feedback}</p>
-              <div>
-                <h4 className="bold-text">{testimonials[currentIndex].name}</h4>
-                <h5 className="p-text">{testimonials[currentIndex].company}</h5>
-              </div>
-            </div>
-          </div>
+  const prevTestimonial = () =>
+    setCurrentIndex(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1);
+  const nextTestimonial = () =>
+    setCurrentIndex(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1);
 
-          <div className="app__testimonial-btns app__flex">
-            <div
-              className="app__flex"
-              onClick={() =>
-                handleClick(
-                  currentIndex === 0
-                    ? testimonials.length - 1
-                    : currentIndex - 1
-                )
-              }
-            >
-              <HiChevronLeft />
-            </div>
-            <div
-              className="app__flex"
-              onClick={() =>
-                handleClick(
-                  currentIndex === testimonials.length - 1
-                    ? 0
-                    : currentIndex + 1
-                )
-              }
-            >
-              <HiChevronRight />
+  return (
+    <section aria-labelledby="testimonial-heading">
+      {testimonials.length > 0 && (
+        <div className="app__testimonial-item app__flex">
+          <img
+            src={urlFor(testimonials[currentIndex].imgurl)}
+            alt={`DP of ${testimonials[currentIndex].name}`}
+            loading="lazy"
+            decoding="async"
+            width="100"
+            height="100"
+          />
+          <div className="app__testimonial-content">
+            <p className="p-text">"{testimonials[currentIndex].feedback}"</p>
+            <div>
+              <h3 className="bold-text">{testimonials[currentIndex].name}</h3>
+              <h4 className="p-text">{testimonials[currentIndex].company}</h4>
             </div>
           </div>
-        </>
+        </div>
       )}
-      <div className="app__testimonial-brands app__flex">
+      <div className="app__testimonial-btns app__flex" aria-label="Testimonial navigation">
+        <button
+          onClick={prevTestimonial}
+          aria-label="Previous testimonial"
+          className="app__flex nav-btn"
+        >
+          <HiChevronLeft />
+        </button>
+        <button
+          onClick={nextTestimonial}
+          aria-label="Next testimonial"
+          className="app__flex nav-btn"
+        >
+          <HiChevronRight />
+        </button>
+      </div>
+      <div
+        className="app__testimonial-brands app__flex"
+        // aria-label="Brands I've worked with"
+      >
         {brands.map((brand) => (
           <div
-            whileInView={{ opacity: [0, 1] }}
-            transition={{ duration: 0.5, type: "tween" }}
             key={brand._id}
+            className="app__brand-logo"
+            aria-hidden="true"
           >
-            <img src={urlFor(brand.imgUrl)} alt={brand.name} />
+            <img
+              src={urlFor(brand.imgUrl)}
+              alt={`${brand.name} logo`}
+              loading="lazy"
+              decoding="async"
+              width="100"
+              height="50"
+            />
           </div>
         ))}
       </div>
-    </>
+    </section>
   );
 };
 

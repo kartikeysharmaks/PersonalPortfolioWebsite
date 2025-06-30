@@ -1,39 +1,46 @@
-import React from "react";
-import "./About.scss";
 import { useState, useEffect } from "react";
+import "./About.scss";
 import { urlFor, client } from "../../client";
 import { Appwrap, Motionwrap } from "../../Wrapper";
 
 function About() {
   const [abouts, setAbouts] = useState([]);
+
   useEffect(() => {
     const query = '*[_type== "abouts"]';
-    client.fetch(query).then((data) => {
-      setAbouts(data);
-    });
+    client.fetch(query).then((data) => setAbouts(data));
   }, []);
 
   return (
-    <>
-      <h2 className="head-text">
-        I know that <span>Good Design </span>
+    <section aria-labelledby="about-heading" className="app__about-section">
+      <h2 id="about-heading" className="head-text">
+        I know that <span>Good Design</span>
         <br />
         means <span>Good Business</span>
       </h2>
-      <div className="app__profiles">
+      <div className="app__profiles" >
         {abouts.map((about, index) => (
-          <div className="app__profile-item" key={about.title + index}>
-            <img src={urlFor(about.imgUrl)} alt={about.title} />
-            <h2 className="bold-text" style={{ marginTop: 20 }}>
-              {about.title}
-            </h2>
-            <p className="p-text" style={{ marginTop: 10 }}>
-              {about.description}
-            </p>
-          </div>
+          <article
+            className="app__profile-item"
+            key={about.title + index}
+            // role="listitem"
+            aria-label={`About ${about.title}`}
+          >
+            <img
+              src={urlFor(about.imgUrl)}
+              alt={`Illustration representing ${about.title}`}
+              loading="lazy"
+              decoding="async"
+              width="250"
+              height="250"
+              className="about-img"
+            />
+            <h3 className="bold-text">{about.title}</h3>
+            <p className="p-text">{about.description}</p>
+          </article>
         ))}
       </div>
-    </>
+    </section>
   );
 }
 
@@ -42,3 +49,4 @@ export default Appwrap(
   "about",
   "app__whitebg"
 );
+

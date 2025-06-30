@@ -5,6 +5,7 @@
 }
 
 .app__testimonial-item {
+    margin: auto;
     width: 60%;
     min-height: 320px;
     background-color: var(--white-color);
@@ -49,12 +50,12 @@
         color: var(--black-color);
         font-family: var(--font-base);
     }
-    h4 {
+    h3 {
         font-weight: 600;
         color: var(--secondary-color);
         margin-top: 2rem;
     }
-    h5 {
+    h3 {
         font-weight: 400;
         color: var(--gray-color);
         margin-top: 5px;
@@ -116,4 +117,31 @@
     @media screen and (min-width:800px) {
         width: 100%;
     }
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  svg {
+    pointer-events: none;
+  }
+}
+
+.app__brand-logo {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }

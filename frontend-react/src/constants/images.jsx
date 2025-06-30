@@ -45,7 +45,7 @@ import banner from '../assets/banner.png';
 import cred from '../assets/cred.png';
 import fitness from '../assets/fitness.jpg';
 import github from '../assets/github.png';
-import cropped from '../assets/cropped.png'
+import cropped from '../assets/cropped.webp'
 import portfolio from '../assets/portfolio.png';
 
 

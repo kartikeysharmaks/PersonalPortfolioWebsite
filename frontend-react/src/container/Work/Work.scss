@@ -7,7 +7,7 @@
 .app__work-filter {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     margin: 4rem 0 2rem;
@@ -16,10 +16,12 @@
         border-radius: 0.5rem;
         background-color: #fff;
         color: #000;
-        font-weight: 800;
+        font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
         margin: 0.5rem;
+        border: none;
+        outline: none;
         &:hover {
             background-color: var(--secondary-color);
             color: #fff;
@@ -115,7 +117,7 @@
     width: 100%;
     position: relative;
     flex-direction: column;
-    h4 {
+    h3 {
         margin-top: 1rem;
         line-height: 1, 5;
     }

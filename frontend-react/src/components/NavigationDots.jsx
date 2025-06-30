@@ -8,6 +8,7 @@ function NavigationDots({ active }) {
           // eslint-disable-next-line 
           <a
             href={`#${item}`}
+            aria-label={`${item} - Kartikey Sharma (Software Developer)`}
             key={item + index}
             className="app__navigation-dot"
             style={active === item ? { backgroundColor: "#313BAC" } : {}}
@@ -16,6 +17,6 @@ function NavigationDots({ active }) {
       )}
     </div>
   );
-}
+};
 
 export default NavigationDots;

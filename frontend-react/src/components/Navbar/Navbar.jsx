@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Navbar.scss";
 import { images } from "../../constants";
 import { HiX, HiMenuAlt4 } from "react-icons/hi";
@@ -15,7 +15,7 @@ function Navbar() {
         {["home", "about", "work", "skills", "contact"].map((item) => (
           <li className="app_flex p-text" key={`link-${item}`}>
             <div />
-            <a href={`#${item}`}>{item}</a>
+            <a href={`#${item}`} aria-label={`${item} - Kartikey Sharma (Software Developer)`}>{item}</a>
           </li>
         ))}
       </ul>
@@ -30,7 +30,7 @@ function Navbar() {
             <ul>
               {["home", "about", "work", "skills", "contact"].map((item) => (
                 <li key={item}>
-                  <a href={`#${item}`} onClick={() => setToggle(false)}>
+                  <a href={`#${item}`} aria-label={`${item} - Kartikey Sharma (Software Developer)`} onClick={() => setToggle(false)}>
                     {item}
                   </a>
                 </li>

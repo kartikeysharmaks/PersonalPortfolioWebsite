@@ -1,6 +1,3 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
 Sitemap: https://kartikeysharmaks.vercel.app/sitemap.xml
-https://kartikeysharmaks.vercel.app/sitemap_index.xml
-https://kartikeysharmaks.vercel.app/sitemap.xml.gz
