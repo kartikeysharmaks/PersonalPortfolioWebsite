@@ -7,11 +7,6 @@ function App() {
   return (
     <div className="app">
       <Helmet>
-        <title>Kartikey Sharma | Portfolio</title>
-        <meta
-          name="description"
-          content="Portfolio of Kartikey Sharma - Web Developer & Freelancer"
-        />
         <meta
           name="google-site-verification"
           content="your-verification-code"
