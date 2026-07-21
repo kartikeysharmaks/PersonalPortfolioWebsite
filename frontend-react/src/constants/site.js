@@ -1,4 +1,4 @@
-export const SITE_URL = "https://kartikeysharmaks.vercel.app";
+export const SITE_URL = "https://www.kartikeysharmaks.in";
 export const SITE_NAME = "Kartikey Sharma";
 export const SITE_TITLE = "Kartikey Sharma | Full Stack Developer";
 export const SITE_DESCRIPTION =
