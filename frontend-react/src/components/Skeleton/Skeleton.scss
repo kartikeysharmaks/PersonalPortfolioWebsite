@@ -1,0 +1,125 @@
+@import "../../styles/breakpoints";
+
+@keyframes brutal-shimmer {
+  to {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  display: block;
+  border: var(--border);
+  background: linear-gradient(
+    90deg,
+    var(--white) 25%,
+    #e8e8e2 50%,
+    var(--white) 75%
+  );
+  background-size: 200% 100%;
+  animation: brutal-shimmer 1.2s ease-in-out infinite;
+  box-shadow: var(--shadow-sm);
+
+  &--rect {
+    width: 100%;
+    min-height: 120px;
+  }
+}
+
+.skeleton-grid {
+  display: grid;
+  gap: var(--space-6);
+
+  &--about {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  &--projects {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include md {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &--education {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include md {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.skeleton-card {
+  padding: var(--space-5);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  background: var(--white);
+  min-height: 120px;
+
+  &--tall {
+    min-height: 200px;
+    animation: brutal-shimmer 1.2s ease-in-out infinite;
+  }
+
+  &--work-row {
+    height: 100px;
+    margin-bottom: var(--space-6);
+    animation: brutal-shimmer 1.2s ease-in-out infinite;
+  }
+
+  &__img,
+  &__project-img {
+    height: 140px;
+    margin-bottom: var(--space-4);
+  }
+
+  &__project-img {
+    height: 200px;
+  }
+
+  &__title {
+    height: 18px;
+    width: 55%;
+    margin-bottom: var(--space-3);
+  }
+
+  &__line {
+    height: 12px;
+  }
+}
+
+.skeleton-work {
+  max-width: 520px;
+  margin-inline: auto;
+  padding-top: var(--space-4);
+}
+
+.skeleton-skills {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include sm {
+    grid-template-columns: 1fr;
+  }
+
+  &__card {
+    height: 180px;
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    animation: brutal-shimmer 1.2s ease-in-out infinite;
+  }
+}
+
+.skeleton-testimonial {
+  margin-top: var(--space-10);
+  min-height: 160px;
+  border: var(--border);
+  box-shadow: var(--shadow);
+  animation: brutal-shimmer 1.2s ease-in-out infinite;
+}

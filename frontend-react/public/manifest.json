@@ -1,0 +1,16 @@
+{
+  "short_name": "Kartikey Sharma",
+  "name": "Kartikey Sharma — Full Stack Developer Portfolio",
+  "description": "Portfolio showcasing web and mobile development projects.",
+  "icons": [
+    {
+      "src": "ks.jfif",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#f2f2ec",
+  "background_color": "#f2f2ec"
+}

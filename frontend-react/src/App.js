@@ -1,67 +1,77 @@
-import "./App.scss";
-import { About, Header, Footer, Work, Skills, Testimonials } from "./container";
+import { lazy, Suspense } from "react";
+import { Helmet } from "react-helmet-async";
+import Header from "./container/Header/Header";
 import { Navbar } from "./components";
-import { Helmet } from 'react-helmet-async';
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  OG_IMAGE,
+} from "./constants/site";
+import { jsonLdGraph } from "./constants/seo";
+
+const About = lazy(() => import("./container/About/About"));
+const Projects = lazy(() => import("./container/Projects/Projects"));
+const Education = lazy(() => import("./container/Education/Education"));
+const Work = lazy(() => import("./container/Work/Work"));
+const Skills = lazy(() => import("./container/Skills/Skills"));
+const Testimonials = lazy(() => import("./container/Testimonials/Testimonials"));
+const Footer = lazy(() => import("./container/Footer/Footer"));
+
+function SectionFallback() {
+  return <div className="section-fallback" aria-hidden="true" />;
+}
 
 function App() {
   return (
-    <div className="app">
+    <>
       <Helmet>
-        <meta
-          name="google-site-verification"
-          content="your-verification-code"
-        />
-        <link rel="canonical" href="https://kartikeysharmaks.vercel.app/" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://kartikeysharmaks.vercel.app",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "About",
-                item: "https://kartikeysharmaks.vercel.app/#about",
-              },
-              {
-                "@type": "ListItem",
-                position: 3,
-                name: "Work",
-                item: "https://kartikeysharmaks.vercel.app/#work",
-              },
-              {
-                "@type": "ListItem",
-                position: 4,
-                name: "Skills",
-                item: "https://kartikeysharmaks.vercel.app/#skills",
-              },
-              {
-                "@type": "ListItem",
-                position: 5,
-                name: "Contact",
-                item: "https://kartikeysharmaks.vercel.app/#contact",
-              },
-            ],
-          })}
-        </script>
+        <html lang="en" />
+        <title>{SITE_TITLE}</title>
+        <meta name="description" content={SITE_DESCRIPTION} />
+        <meta name="keywords" content={SITE_KEYWORDS} />
+        <meta name="author" content={SITE_NAME} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={SITE_URL} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:title" content={SITE_TITLE} />
+        <meta property="og:description" content={SITE_DESCRIPTION} />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:site_name" content={SITE_NAME} />
+        <meta property="og:locale" content="en_IN" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={SITE_URL} />
+        <meta name="twitter:title" content={SITE_TITLE} />
+        <meta name="twitter:description" content={SITE_DESCRIPTION} />
+        <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:creator" content="@Kartikey0302" />
+
+        <script type="application/ld+json">{JSON.stringify(jsonLdGraph)}</script>
       </Helmet>
 
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       <Navbar />
-      <main role="main">
+      <main id="main-content">
         <Header />
-        <About />
-        <Work />
-        <Skills />
-        <Testimonials />
+        <Suspense fallback={<SectionFallback />}>
+          <About />
+          <Projects />
+          <Education />
+          <Work />
+          <Skills />
+          <Testimonials />
+          <Footer />
+        </Suspense>
       </main>
-      <Footer />
-    </div>
+    </>
   );
 }
 

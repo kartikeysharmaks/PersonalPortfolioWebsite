@@ -1,130 +1,114 @@
-.app__skills {
-    flex: 1;
-    width: 100%;
-    flex-direction: column;
-}
+@import "../../styles/breakpoints";
 
-.app__skills-container {
-    margin:auto ;
-    width: 80%;
-    margin-top: 3rem;
+.skills {
+  overflow-x: clip;
+
+  .section-title {
+    color: var(--white);
+  }
+
+  &__marquee {
+    margin: var(--space-6) 0 var(--space-10);
+
+    .marquee__item {
+      opacity: 0.18;
+      color: var(--white);
+      -webkit-text-stroke: 0;
+
+      &--outline {
+        -webkit-text-stroke: 2px rgba(255, 255, 255, 0.35);
+        color: transparent;
+      }
+
+      &--accent {
+        opacity: 1;
+        color: var(--yellow);
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+
+    @include lg {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include sm {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    padding: 0;
+    overflow: hidden;
+    background: var(--white) !important;
+    color: var(--black);
+  }
+
+  &__accent {
+    display: block;
+    height: 5px;
+
+    &--red {
+      background: var(--red);
+    }
+    &--blue {
+      background: var(--blue);
+    }
+    &--yellow {
+      background: var(--yellow);
+    }
+    &--green {
+      background: var(--green);
+    }
+  }
+
+  &__label {
+    padding: var(--space-4) var(--space-5) var(--space-2);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0 var(--space-5) var(--space-5);
+  }
+
+  &__item {
     display: flex;
-    flex-direction: row;
-    @media screen and (max-width: 900px) {
-        width: 100%;
-        flex-direction: column;
-    }
-}
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) 0;
+    font-size: var(--text-sm);
+    font-weight: 500;
 
-.app__skills-list {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-right: 5rem;
-    @media screen and (max-width: 900px) {
-        margin-right: 0;
-        justify-content: center;
-        align-items: center;
+    &::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      flex-shrink: 0;
+      border: 2px solid var(--black);
+      background: var(--yellow);
     }
-}
 
-.app__skills-item {
-    flex-direction: column;
-    text-align: center;
-    margin: 1rem;
-    transition: all 0.3s ease-in-out;
-    div {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        background-color: #fef4f5;
-        img {
-            width: 50%;
-            height: 50%;
-        }
-        &:hover {
-            box-shadow: 0 0 25px #fef4f5;
-        }
-        @media screen and (min-width: 2000px) {
-            width: 150px;
-            height: 150px;
-        }
-        @media screen and (max-width: 450px) {
-            width: 70px;
-            height: 70px;
-        }
+    img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
     }
-    p {
-        font-weight: 500;
-        margin-top: 0.5rem;
-    }
-    @media screen and (min-width: 2000px) {
-        margin: 1rem 2rem;
-        p {
-            margin-top: 1rem;
-        }
-    }
-}
 
-.app__skills-exp {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    @media screen and (max-width: 900px) {
-        margin-top: 2rem;
-    }
-}
+    &--empty {
+      opacity: 0.4;
 
-.app__skills-exp-item {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin: 1rem 0;
-}
-
-.app__skills-exp-works {
-    flex: 1;
-    .app__skills-exp-work {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        margin-bottom: 1rem;
-        cursor: pointer;
-        h4 {
-            font-weight: 500;
-        }
-        p {
-            font-weight: 400;
-            color: var(--gray-color);
-            margin-top: 5px;
-        }
+      &::before {
+        display: none;
+      }
     }
-}
-
-.app__skills-exp-year {
-    margin-right: 3rem;
-    p {
-        font-weight: 800;
-        color: var(--secondary-color);
-    }
-    @media screen and (max-width: 450px) {
-        margin-right: 1rem;
-    }
-}
-
-.app__skills-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  }
 }

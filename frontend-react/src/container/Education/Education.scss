@@ -1,0 +1,116 @@
+@import "../../styles/breakpoints";
+
+.education {
+  &__cms-hint {
+    margin-bottom: var(--space-6);
+    padding: var(--space-3) var(--space-4);
+    border: var(--border);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    font-size: var(--text-xs);
+    max-width: 52ch;
+    line-height: var(--leading-relaxed);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+
+    @include md {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-height: 220px;
+
+    &--yellow {
+      background: var(--yellow);
+    }
+    &--green {
+      background: var(--green);
+    }
+    &--blue {
+      background: var(--blue);
+      color: var(--white);
+
+      .education__desc,
+      .education__institution {
+        color: rgba(255, 255, 255, 0.88);
+      }
+      .education__period {
+        border-color: var(--white);
+        color: var(--white);
+      }
+    }
+    &--red {
+      background: var(--red);
+      color: var(--white);
+
+      .education__desc,
+      .education__institution {
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .education__period {
+        border-color: var(--white);
+        color: var(--white);
+      }
+    }
+  }
+
+  &__card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  &__icon {
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+
+  &__period {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: var(--space-1) var(--space-2);
+    border: 2px solid var(--black);
+    white-space: nowrap;
+  }
+
+  &__degree {
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    line-height: var(--leading-snug);
+    margin-top: var(--space-2);
+  }
+
+  &__institution {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.85;
+  }
+
+  &__desc {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    margin-top: var(--space-2);
+    flex: 1;
+  }
+
+  &__tag {
+    align-self: flex-start;
+    margin-top: auto;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: var(--space-1) var(--space-3);
+    border: 2px solid var(--black);
+    background: var(--white);
+  }
+}

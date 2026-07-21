@@ -1,82 +1,81 @@
+import { BrutalButton } from "../../components/ui/BrutalButton";
 import "./Header.scss";
-import { images } from "../../constants";
-import { Appwrap } from "../../Wrapper";
+
+const profilePicUrl = `${process.env.PUBLIC_URL}/profilepic.webp`;
 
 function Header() {
   return (
-    <header
-      id="home"
-      className="app__header app__flex"
-      role="banner"
-      aria-label="Hero section for Kartikey Sharma"
-    >
-      <section className="app__header-info" aria-labelledby="intro-heading">
-        <div className="app__header-badge">
-          <div className="badge-cmp app__flex">
-            <span aria-hidden="true" role="img">
-              👋
+    <section id="home" className="hero section" aria-label="Introduction">
+      <div className="container hero__grid">
+        <div className="hero__content">
+          <div className="hero__badges animate-hero-fade-up" style={{ animationDelay: "0.15s" }}>
+            <span className="brutal-badge">
+              <span className="brutal-badge__dot" aria-hidden="true" />
+              Available for work
             </span>
-            <div className="badge-text">
-              <p id="intro-heading" className="p-text">
-                Hello, I am
-              </p>
-              <h1 className="head-text" aria-label="Kartikey Sharma">
-                Kartikey
-              </h1>
-            </div>
+            <span className="brutal-badge">Haridwar, India</span>
           </div>
-          <div className="tag-cmp app__flex" aria-label="Professional roles">
-            <p className="p-text">Web Developer</p>
-            <p className="p-text">Freelancer</p>
+
+          <p className="hero__funk display animate-hero-fade-up" style={{ animationDelay: "0.25s" }}>
+            Let&apos;s make some{" "}
+            <span className="hero__funk-accent">noise.</span>
+          </p>
+
+          <h1 className="hero__title display animate-hero-fade-up" style={{ animationDelay: "0.35s" }}>
+            Kartikey Sharma
+          </h1>
+
+          <p className="hero__role mono animate-hero-fade-up" style={{ animationDelay: "0.45s" }}>
+            {"// Full Stack Developer & Freelancer"}
+          </p>
+
+          <p className="hero__tagline animate-hero-fade-up" style={{ animationDelay: "0.55s" }}>
+            Crafting bold digital experiences that punch above their weight —
+            web, mobile, and everything in between.
+          </p>
+
+          <div className="hero__actions animate-hero-fade-up" style={{ animationDelay: "0.65s" }}>
+            <BrutalButton href="#projects" variant="red">
+              View work ↓
+            </BrutalButton>
+            <BrutalButton href="#contact" variant="white">
+              ★ Work with me
+            </BrutalButton>
           </div>
         </div>
-      </section>
-      <section className="app__header-img" aria-hidden="true">
-        <img
-          src={images.cropped}
-          alt="Portrait of Kartikey Sharma"
-          className="profile-bg"
-          loading="eager"
-          decoding="async"
-          width="300"
-          height="300"
-          fetchpriority="high"
-        />
-        <img
-          className="overlay__circle"
-          src={images.circle}
-          alt=""
-          loading="lazy"
-          decoding="async"
-          width="320"
-          height="320"
-          aria-hidden="true"
-          fetchpriority="high"
-        />
-      </section>
-      <section
-        className="app__header-circles"
-        aria-label="Technologies I work with"
-      >
-        {[images.Reactnative, images.redux, images.sass].map((icon, index) => (
-          <div
-            className="circle-cmp app__flex"
-            key={`tech-circle-${index}`}
-            aria-label={`Technology ${index + 1}`}
-          >
-            <img
-              src={icon}
-              alt={`Technology logo ${index + 1}`}
-              loading="lazy"
-              decoding="async"
-              width="50"
-              height="50"
-            />
+
+        <div className="hero__visual animate-hero-visual">
+          <div className="hero__frame brutal-card">
+            <span className="hero__est mono">Est. 2020</span>
+            <picture>
+              <source
+                media="(max-width: 480px)"
+                srcSet={`${process.env.PUBLIC_URL}/profilepic-mobile.webp`}
+                type="image/webp"
+              />
+              <img
+                src={profilePicUrl}
+                alt="Portrait of Kartikey Sharma"
+                width="480"
+                height="600"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </picture>
+            <div className="hero__sticker animate-hero-sticker">
+              Open
+              <br />
+              for
+              <br />
+              projects
+            </div>
           </div>
-        ))}
-      </section>
-    </header>
+        </div>
+      </div>
+    </section>
   );
 }
 
-export default Appwrap(Header, "home");
+export default Header;
+

@@ -1,137 +1,70 @@
-import { useEffect, useState } from "react";
+import { usePortfolio } from "../../context/PortfolioContext";
+import { SectionHeader } from "../../components/ui/SectionHeader";
+import { Reveal } from "../../components/ui/Reveal";
+import { WorkSkeleton } from "../../components/Skeleton/Skeleton";
 import "./Work.scss";
-import { Appwrap, Motionwrap } from "../../Wrapper";
-import { AiFillEye, AiFillGithub } from "react-icons/ai";
-import { urlFor, client } from "../../client";
-import { motion } from "framer-motion";
+
+const NODE_COLORS = ["red", "blue", "yellow", "green"];
 
 function Work() {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
-  const [works, setWorks] = useState([]);
-  const [filterWork, setFilterWork] = useState([]);
+  const { portfolio, loading } = usePortfolio();
+  const experiences = portfolio?.experiences ?? [];
 
-  useEffect(() => {
-    const query = '*[_type== "works"]';
-    client.fetch(query).then((data) => {
-      setWorks(data);
-      setFilterWork(data);
-    });
-  }, []);
-
-  const handleWorkFilter = (item) => {
-    setActiveFilter(item);
-    setAnimateCard({ y: 100, opacity: 0 });
-    setTimeout(() => {
-      setAnimateCard({ y: 0, opacity: 1 });
-      setFilterWork(
-        item === "All" ? works : works.filter((work) => work.tags.includes(item))
-      );
-    }, 500);
-  };
+  let roleIndex = 0;
 
   return (
-    <section aria-labelledby="portfolio-heading">
-      <h2 className="head-text" id="portfolio-heading">
-        My Creative <span><br />Portfolio</span> And <span>Works</span>
-      </h2>
-      <div className="app__work-filter" role="tablist" aria-label="Work Filters">
-        {["UI/UX", "Web App", "Mobile App", "React JS", "All"].map((item, index) => (
-          <button
-            key={item + index}
-            onClick={() => handleWorkFilter(item)}
-            className={`app__work-filter-item app__flex p-text ${
-              activeFilter === item ? "item-active" : ""
-            }`}
-            role="tab"
-            aria-selected={activeFilter === item}
-            aria-label={`Filter by ${item}`}
-          >
-            {item}
-          </button>
-        ))}
+    <section id="work" className="work section" aria-labelledby="work-title">
+      <div className="container">
+        <SectionHeader
+          index="04"
+          label="Work"
+          funk="Clocked hours, real wins."
+          titleBefore="Where I've"
+          highlight="worked"
+          highlightVariant="yellow"
+          subtitle="Teams, brands, and indie experiments I've contributed to over the years."
+        />
+
+        {loading && experiences.length === 0 ? (
+          <WorkSkeleton />
+        ) : (
+          <div className="work__timeline">
+            <div className="work__line" aria-hidden="true" />
+            {experiences.map((exp) =>
+              exp.works?.map((role, roleIdx) => {
+                const side = roleIndex % 2 === 0 ? "left" : "right";
+                const color = NODE_COLORS[roleIndex % NODE_COLORS.length];
+                const key = `${exp.year}-${role.name}-${roleIdx}`;
+                const idx = roleIndex;
+                roleIndex += 1;
+
+                return (
+                  <Reveal
+                    as="article"
+                    key={key}
+                    className={`work__item work__item--${side}`}
+                    direction={side === "left" ? "left" : "right"}
+                    delay={idx * 60}
+                  >
+                    <span
+                      className={`work__node work__node--${color}`}
+                      aria-hidden="true"
+                    />
+                    <div className="work__card brutal-card">
+                      <span className="work__date mono">{exp.year}</span>
+                      <h3 className="work__role display">{role.name}</h3>
+                      <p className="work__company mono">↳ {role.company}</p>
+                      <p className="work__desc">{role.desc}</p>
+                    </div>
+                  </Reveal>
+                );
+              })
+            )}
+          </div>
+        )}
       </div>
-      <motion.div
-        className="app__work-portfolio"
-        animate={animateCard}
-        transition={{ duration: 0.5, delayChildren: 0.5 }}
-        // role="list"
-        aria-label="Portfolio Projects"
-      >
-        {filterWork.map((work) => (
-          <article
-            className="app__work-item app__flex"
-            key={work._id}
-            // role="listitem"
-            aria-label={`Project: ${work.title}`}
-          >
-            <div className="app__work-img app__flex">
-              <img
-                src={urlFor(work.imgUrl)}
-                alt={`Screenshot of project ${work.title}`}
-                loading="lazy"
-                decoding="async"
-                width="300"
-                height="200"
-                crossorigin="anonymous"
-              />
-              <motion.div
-                whileHover={{ opacity: [0, 1] }}
-                transition={{ duration: 0.25, ease: "easeInOut", staggerChildren: 0.5 }}
-                className="app__work-hover app__flex"
-              >
-                {work.projectLink && (
-                  <a
-                    href={work.projectLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`View ${work.title} live`}
-                  >
-                    <motion.div
-                      whileInView={{ scale: [0, 1] }}
-                      whileHover={{ scale: [1, 0.9] }}
-                      transition={{ duration: 0.25 }}
-                      className="app__flex"
-                    >
-                      <AiFillEye />
-                    </motion.div>
-                  </a>
-                )}
-                {work.codeLink && (
-                  <a
-                    href={work.codeLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`View code of ${work.title} on GitHub`}
-                  >
-                    <motion.div
-                      whileInView={{ scale: [0, 1] }}
-                      whileHover={{ scale: [1, 0.9] }}
-                      transition={{ duration: 0.25 }}
-                      className="app__flex"
-                    >
-                      <AiFillGithub />
-                    </motion.div>
-                  </a>
-                )}
-              </motion.div>
-            </div>
-            <div className="app__work-content app__flex">
-              <h3 className="bold-text">{work.title}</h3>
-              <p className="p-text mt-10">{work.description}</p>
-              <div className="app__work-tag app__flex">
-                <p className="p-text">{work.tags?.[0]}</p>
-              </div>
-            </div>
-          </article>
-        ))}
-      </motion.div>
     </section>
   );
 }
 
-export default Appwrap(
-  Motionwrap(Work, "app__works"),
-  "work",
-  "app__primarybg"
-);
+export default Work;

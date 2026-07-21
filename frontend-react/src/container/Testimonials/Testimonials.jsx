@@ -1,92 +1,96 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
-import { Appwrap, Motionwrap } from "../../Wrapper";
-import { urlFor, client } from "../../client";
+import { usePortfolio } from "../../context/PortfolioContext";
+import { urlForImage } from "../../lib/sanity";
+import { SectionHeader } from "../../components/ui/SectionHeader";
+import { TestimonialSkeleton } from "../../components/Skeleton/Skeleton";
 import "./Testimonials.scss";
 
-const Testimonial = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [testimonials, setTestimonials] = useState([]);
-  const [brands, setBrands] = useState([]);
+function Testimonials() {
+  const { portfolio, loading } = usePortfolio();
+  const testimonials = portfolio?.testimonials ?? [];
+  const brands = portfolio?.brands ?? [];
+  const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    const query = '*[_type == "testimonials"]';
-    const brandsQuery = '*[_type == "brands"]';
-    client.fetch(query).then(setTestimonials);
-    client.fetch(brandsQuery).then(setBrands);
-  }, []);
-
-  const prevTestimonial = () =>
-    setCurrentIndex(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1);
-  const nextTestimonial = () =>
-    setCurrentIndex(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1);
+  const current = testimonials[index];
+  const prev = () =>
+    setIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
+  const next = () =>
+    setIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1));
 
   return (
-    <section aria-labelledby="testimonial-heading">
-      {testimonials.length > 0 && (
-        <div className="app__testimonial-item app__flex">
-          <img
-            src={urlFor(testimonials[currentIndex].imgurl)}
-            alt={`DP of ${testimonials[currentIndex].name}`}
-            loading="lazy"
-            decoding="async"
-            width="100"
-            height="100"
-            crossorigin="anonymous"
-          />
-          <div className="app__testimonial-content">
-            <p className="p-text">"{testimonials[currentIndex].feedback}"</p>
-            <div>
-              <h3 className="bold-text">{testimonials[currentIndex].name}</h3>
-              <h4 className="p-text">{testimonials[currentIndex].company}</h4>
-            </div>
+    <section id="testimonials" className="testimonials section" aria-labelledby="testimonials-title">
+      <div className="container">
+        <SectionHeader
+          index="06"
+          label="Testimonials"
+          funk="Don't take my word for it."
+          titleBefore="Kind"
+          highlight="words"
+          highlightVariant="blue"
+          subtitle="What collaborators and clients have said about working together."
+        />
+
+        {loading && testimonials.length === 0 ? (
+          <TestimonialSkeleton />
+        ) : (
+          testimonials.length > 0 && (
+            <>
+              <blockquote
+                key={index}
+                className="testimonials__quote brutal-card testimonials__quote--animate"
+              >
+                <img
+                  src={urlForImage(current.imgurl, { width: 120, quality: 85 })}
+                  alt=""
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                />
+                <div>
+                  <p className="testimonials__text">&ldquo;{current.feedback}&rdquo;</p>
+                  <footer>
+                    <cite className="testimonials__name display">{current.name}</cite>
+                    <span className="mono testimonials__company">{current.company}</span>
+                  </footer>
+                </div>
+              </blockquote>
+
+              {testimonials.length > 1 && (
+                <div className="testimonials__nav" aria-label="Testimonial navigation">
+                  <button type="button" className="testimonials__btn" onClick={prev} aria-label="Previous testimonial">
+                    <HiChevronLeft aria-hidden="true" />
+                  </button>
+                  <span className="mono testimonials__counter" aria-live="polite">
+                    {String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+                  </span>
+                  <button type="button" className="testimonials__btn" onClick={next} aria-label="Next testimonial">
+                    <HiChevronRight aria-hidden="true" />
+                  </button>
+                </div>
+              )}
+            </>
+          )
+        )}
+
+        {brands.length > 0 && (
+          <div className="testimonials__brands" aria-label="Brands worked with">
+            {brands.map((brand) => (
+              <div key={brand._id} className="testimonials__brand brutal-card">
+                <img
+                  src={urlForImage(brand.imgUrl, { width: 140, quality: 80 })}
+                  alt={brand.name || "Brand logo"}
+                  loading="lazy"
+                  width="120"
+                  height="40"
+                />
+              </div>
+            ))}
           </div>
-        </div>
-      )}
-      <div className="app__testimonial-btns app__flex" aria-label="Testimonial navigation">
-        <button
-          onClick={prevTestimonial}
-          aria-label="Previous testimonial"
-          className="app__flex nav-btn"
-        >
-          <HiChevronLeft />
-        </button>
-        <button
-          onClick={nextTestimonial}
-          aria-label="Next testimonial"
-          className="app__flex nav-btn"
-        >
-          <HiChevronRight />
-        </button>
-      </div>
-      <div
-        className="app__testimonial-brands app__flex"
-        // aria-label="Brands I've worked with"
-      >
-        {brands.map((brand) => (
-          <div
-            key={brand._id}
-            className="app__brand-logo"
-            aria-hidden="true"
-          >
-            <img
-              src={urlFor(brand.imgUrl)}
-              alt={`${brand.name} logo`}
-              loading="lazy"
-              decoding="async"
-              width="100"
-              height="50"
-              crossorigin="anonymous"
-            />
-          </div>
-        ))}
+        )}
       </div>
     </section>
   );
-};
+}
 
-export default Appwrap(
-  Motionwrap(Testimonial, "app__testimonial"),
-  "testimonials",
-  "app__primarybg"
-);
+export default Testimonials;

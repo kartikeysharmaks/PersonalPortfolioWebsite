@@ -1,9 +1,39 @@
-# Sanity Clean Content Studio
+# Sanity Studio — Personal Portfolio
 
-Congratulations, you have now installed the Sanity Content Studio, an open source real-time content editing environment connected to the Sanity backend.
+## Run Studio locally (edit Education & all content)
 
-Now you can do the following things:
+```bash
+cd backend-sanity
+npm install
+npm start
+```
 
-- [Read “getting started” in the docs](https://www.sanity.io/docs/introduction/getting-started?utm_source=readme)
-- [Join the community Slack](https://slack.sanity.io/?utm_source=readme)
-- [Extend and build plugins](https://www.sanity.io/docs/content-studio/extending?utm_source=readme)
+Studio opens at **http://localhost:3333**
+
+## Add Education entries
+
+1. Start the studio (`npm start` above).
+2. In the sidebar, open **Education** (pinned at the top).
+3. Click **Create** and fill in:
+   - Degree / Program
+   - Institution
+   - Period (e.g. `2018 — 2022`)
+   - Description (optional)
+   - Tag (optional, e.g. `FOREVER`)
+   - Sort order (lower = appears first)
+4. **Publish** each document.
+
+The React site reads from the `production` dataset automatically (CDN). Refresh the portfolio after publishing.
+
+## Deploy Studio to Sanity hosting (optional)
+
+```bash
+cd backend-sanity
+npx sanity deploy
+```
+
+Follow the prompts to link or create a hosted studio URL.
+
+## Note on schemas
+
+The **Education** schema (`schemas/educations.js`) ships with this repo. You do not push schemas separately — starting or deploying the studio loads them. Only **content** (education documents) is created in the Studio UI.

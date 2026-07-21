@@ -1,172 +1,168 @@
-#home {
-  position: relative;
-  background: url("../../assets/bgIMG.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat;
-  // disable the default padding styles
-  .app__wrapper {
-    padding: 0;
-    .copyright {
-      display: none;
-    }
-  }
-}
+@import "../../styles/breakpoints";
 
-.app__header {
-  flex: 1;
-  width: 100%;
-  flex-direction: row;
-  padding: 6rem 2rem 0rem;
-  @media screen and (min-width: 2000px) {
-    padding-top: 8rem;
-  }
-  @media screen and (max-width: 1200px) {
-    flex-direction: column;
-  }
-  @media screen and (max-width: 450px) {
-    padding: 6rem 1rem 2rem;
-  }
-}
-
-.app__header-info {
-  flex: 0.65;
+.hero {
+  padding-top: calc(var(--nav-h) + var(--space-8));
+  padding-bottom: var(--space-12);
+  min-height: 100svh;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: 100%;
-  margin: 0 2rem;
-  @media screen and (max-width: 1200px) {
-    width: 100%;
-    margin-right: 0rem;
-  }
-}
-
-.app__header-badge {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  flex-direction: column;
-  .badge-cmp,
-  .tag-cmp {
-    padding: 1rem 2rem;
-    background: var(--white-color);
-    border-radius: 15px;
-    flex-direction: row;
-    width: auto;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  }
-  .tag-cmp {
-    flex-direction: column;
-    margin-top: 3rem;
-    p {
-      width: 100%;
-      text-transform: uppercase;
-      text-align: right;
-    }
-  }
-  span {
-    font-size: 2.5rem;
-    @media screen and (min-width: 2000px) {
-      font-size: 5rem;
-    }
-  }
-  @media screen and (max-width: 1200px) {
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-}
-
-.app__header-circles {
-  flex: 0.75;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  height: 100%;
-  margin-left: 1rem;
-  div {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: var(--white-color);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    img {
-      width: 60%;
-      height: 60%;
-    }
-  }
-  div:nth-child(1) {
-    width: 100px;
-    height: 100px;
-  }
-  div:nth-child(2) {
-    margin: 1.75rem;
-    width: 150px;
-    height: 150px;
-  }
-  div:nth-child(3) {
-    width: 90px;
-    height: 90px;
-  }
-  @media screen and (min-width: 2000px) {
-    div:nth-child(1) {
-      width: 400px;
-      height: 400px;
-    }
-    div:nth-child(2) {
-      margin: 1.75rem;
-      width: 170px;
-      height: 170px;
-    }
-    div:nth-child(3) {
-      width: 250px;
-      height: 250px;
-    }
-  }
-  @media screen and (max-width: 1200px) {
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-left: 0;
-    div {
-      margin: 1rem;
-    }
-  }
-}
-
-.app__header-img {
-  flex: 1;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  .profile-bg {
-    position: relative;
-    z-index: 2;
-    width: 240px;
-    height: 240px;
-    aspect-ratio: 1 / 1; 
-    display: flex;
-    justify-content: center;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    gap: clamp(var(--space-6), 4vw, var(--space-16));
     align-items: center;
+    width: 100%;
+    min-width: 0;
+
+    @include lg {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
   }
-  .overlay__circle {
+
+  &__content {
+    min-width: 0;
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+  }
+
+  &__funk {
+    font-size: clamp(1.1rem, 2.5vw, 2.25rem);
+    margin-bottom: var(--space-4);
+    line-height: 1.1;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+
+  &__funk-accent {
+    display: inline-block;
+    padding: 0.05em 0.15em;
+    background: var(--yellow);
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    transform: rotate(-2deg);
+
+    @include md {
+      transform: none;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-syne);
+    font-size: clamp(2.15rem, 1rem + 8vw, 5.5rem);
+    margin-bottom: var(--space-5);
+    line-height: 0.95;
+    // text-wrap: balance;
+    // overflow-wrap: anywhere;
+  }
+
+  &__role {
+    margin-bottom: var(--space-5);
+    opacity: 0.78;
+  }
+
+  &__tagline {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    max-width: 40ch;
+    margin-bottom: var(--space-8);
+    color: rgba(10, 10, 10, 0.78);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  &__visual {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    justify-self: stretch;
+
+    @include lg {
+      justify-self: center;
+      max-width: min(100%, 440px);
+    }
+  }
+
+  &__frame {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    max-width: min(560px, 100%);
+    margin-inline: auto;
+
+    img {
+      width: 100%;
+      min-height: clamp(320px, 48vh, 560px);
+      max-height: min(70vh, 600px);
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(0.1) contrast(1.05);
+    }
+
+    @include lg {
+      img {
+        min-height: clamp(300px, 70vw, 440px);
+        max-height: none;
+      }
+    }
+
+    @include sm {
+      img {
+        min-height: clamp(280px, 85vw, 380px);
+      }
+    }
+  }
+
+  &__est {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    width: 320px;
-    height: 320px;
-    object-fit: contain;
+    top: var(--space-4);
+    left: var(--space-4);
+    z-index: 2;
+    background: var(--white);
+    border: var(--border);
+    padding: var(--space-2) var(--space-3);
+    box-shadow: var(--shadow-sm);
+    font-weight: 700;
+    font-size: var(--text-xs);
   }
-  @media screen and (max-width: 1200px) {
-    margin: 2rem 0;
+
+  &__sticker {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    z-index: 3;
+
+    @include md-up {
+      top: -0.35rem;
+      right: -0.35rem;
+    }
+    background: var(--blue);
+    color: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.35;
+    letter-spacing: 0.05em;
+
+    @include sm {
+      font-size: 0.625rem;
+      padding: var(--space-2) var(--space-3);
+    }
   }
 }

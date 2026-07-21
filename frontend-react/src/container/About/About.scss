@@ -1,43 +1,92 @@
-.app__about {
-    flex: 1;
-    width: 100%;
-    flex-direction: column;
-}
+@import "../../styles/breakpoints";
 
-.app__profiles {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-}
+.about {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-6);
 
-.app__profile-item {
-    width: 190px;
+    @include sm {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    padding: var(--space-6);
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
     flex-direction: column;
-    margin: 2rem;
+    gap: var(--space-3);
+
+    &--yellow {
+      background: var(--yellow);
+    }
+    &--green {
+      background: var(--green);
+    }
+    &--blue {
+      background: var(--blue);
+      color: var(--white);
+
+      .about__card-desc {
+        color: rgba(255, 255, 255, 0.88);
+      }
+      .about__index {
+        border-color: var(--white);
+        color: var(--white);
+      }
+    }
+    &--red {
+      background: var(--red);
+      color: var(--white);
+
+      .about__card-desc {
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .about__index {
+        border-color: var(--white);
+        color: var(--white);
+      }
+    }
+  }
+
+  &__card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__icon {
+    font-size: 1.2rem;
+  }
+
+  &__index {
+    padding: var(--space-1) var(--space-2);
+    border: 2px solid var(--black);
+    font-weight: 700;
+    font-size: var(--text-xs);
+  }
+
+  &__img {
+    border: var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background: var(--white);
+
     img {
-        width: 100%;
-        height: 170px;
-        border-radius: 15px;
-        object-fit: cover;
+      width: 100%;
+      height: clamp(120px, 20vw, 160px);
+      object-fit: cover;
     }
-    @media screen and (min-width:2000px) {
-        width: 370px;
-        margin: 2rem 4rem;
-        img {
-            height: 320px;
-        }
-    }
-}
+  }
 
-.app__profile-item h3 {
-  margin-top: 20px;
-}
+  &__card-title {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    line-height: var(--leading-snug);
+    margin-top: var(--space-2);
+  }
 
-.app__profile-item p {
-  margin-top: 10px;
+  &__card-desc {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
 }

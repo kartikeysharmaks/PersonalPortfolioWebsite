@@ -1,46 +1,119 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { BrutalButton } from "../ui/BrutalButton";
+import { useActiveSection } from "../../hooks/useActiveSection";
 import "./Navbar.scss";
-import { images } from "../../constants";
-import { HiX, HiMenuAlt4 } from "react-icons/hi";
-import { motion } from "framer-motion";
+
+const LINKS = [
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "education", label: "Education" },
+  { id: "work", label: "Work" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
+];
 
 function Navbar() {
-  const [toggle, setToggle] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const activeSection = useActiveSection([
+    "home",
+    ...LINKS.map((l) => l.id),
+    "testimonials",
+  ]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const isActive = (id) =>
+    activeSection === id || (id === "about" && activeSection === "home");
+
   return (
-    <nav className="app__navbar">
-      <div className="app__navbar-logo">
-        <img src={images.portfolio} alt="logo - Kartikey Sharma Portfolio Frontend Developer(React.js)" />
-      </div>
-      <ul className="app__navbar-link">
-        {["home", "about", "work", "skills", "contact"].map((item) => (
-          <li className="app_flex p-text" key={`link-${item}`}>
-            <div />
-            <a href={`#${item}`} aria-label={`${item} - Kartikey Sharma (Software Developer)`}>{item}</a>
-          </li>
-        ))}
-      </ul>
-      <div className="app__navbar-menu">
-        <HiMenuAlt4 onClick={() => setToggle(true)} />
-        {toggle && (
-          <motion.div
-            whileInView={{ x: [300, 0] }}
-            transition={{ duration: 0.85, ease: "easeOut" }}
+    <header
+      className={`nav ${scrolled ? "nav--scrolled" : ""}`}
+      role="banner"
+    >
+      <div className="nav__sticky">
+        <div className="nav__inner container">
+          <a href="#home" className="nav__logo" aria-label="Kartikey Sharma — Home">
+            <span className="nav__logo-mark" aria-hidden="true" />
+            <span className="nav__logo-text">Kartikey.</span>
+          </a>
+
+          <nav className="nav__links" aria-label="Primary">
+            {LINKS.map(({ id, label }) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={`nav__link ${isActive(id) ? "nav__link--active" : ""}`}
+                aria-current={isActive(id) ? "page" : undefined}
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+
+          <BrutalButton href="#contact" variant="black" className="nav__cta">
+            Hire me
+          </BrutalButton>
+
+          <button
+            type="button"
+            className="nav__burger"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((v) => !v)}
           >
-            <HiX onClick={() => setToggle(false)} />
-            <ul>
-              {["home", "about", "work", "skills", "contact"].map((item) => (
-                <li key={item}>
-                  <a href={`#${item}`} aria-label={`${item} - Kartikey Sharma (Software Developer)`} onClick={() => setToggle(false)}>
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
-    </nav>
+
+      {open && (
+        <div
+          className="nav__mobile nav__mobile--open"
+          onClick={() => setOpen(false)}
+          role="presentation"
+        >
+          <nav
+            id="mobile-nav"
+            className="nav__mobile-panel"
+            aria-label="Mobile"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {LINKS.map(({ id, label }) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={isActive(id) ? "nav__link--active" : ""}
+                onClick={() => setOpen(false)}
+              >
+                {label}
+              </a>
+            ))}
+            <BrutalButton
+              href="#contact"
+              variant="red"
+              onClick={() => setOpen(false)}
+            >
+              Hire me →
+            </BrutalButton>
+          </nav>
+        </div>
+      )}
+    </header>
   );
-};
+}
 
 export default Navbar;

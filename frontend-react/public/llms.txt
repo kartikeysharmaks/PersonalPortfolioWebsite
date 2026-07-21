@@ -1,0 +1,18 @@
+# Kartikey Sharma
+
+> Portfolio of Kartikey Sharma — a Full Stack Software Developer building modern web and mobile applications with React, Next.js, Node.js, and React Native.
+
+## Sections
+- [Home](https://kartikeysharmaks.vercel.app/): Portfolio entry point, introduction, and brief bio.
+- [About](https://kartikeysharmaks.vercel.app/#about): Core philosophies regarding software design, product scale, and user experience.
+- [Projects](https://kartikeysharmaks.vercel.app/#projects): Showcase of shipped full-stack web builds, UI/UX designs, and mobile apps.
+- [Education](https://kartikeysharmaks.vercel.app/#education): Background in formal training and self-taught certifications.
+- [Work](https://kartikeysharmaks.vercel.app/#work): Timeline of professional career, contracts, and software engineering roles.
+- [Skills](https://kartikeysharmaks.vercel.app/#skills): Developer stack and tool directory categorized by Frontend, Backend, Mobile, and Tools.
+- [Testimonials](https://kartikeysharmaks.vercel.app/#testimonials): Recommendations and reviews from collaborators and clients.
+
+## Contact & Profiles
+- [Email Contact](mailto:kartikeysharma1616@gmail.com): Direct email channel for freelance and full-time inquiries.
+- [GitHub](https://github.com/kartikeysharmaks): Repository directory for open-source contributions and personal code.
+- [LinkedIn](https://www.linkedin.com/in/kartikeysharmaks/): Professional work history network.
+- [Twitter / X](https://twitter.com/Kartikey0302): Technical announcements, thoughts, and industry updates.

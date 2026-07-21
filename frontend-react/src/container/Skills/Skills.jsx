@@ -1,80 +1,102 @@
-import { useState, useEffect } from "react";
-import { Appwrap, Motionwrap } from "../../Wrapper";
-import { urlFor, client } from "../../client";
+import { useMemo } from "react";
+import { usePortfolio } from "../../context/PortfolioContext";
+import { urlForImage } from "../../lib/sanity";
+import { SectionHeader } from "../../components/ui/SectionHeader";
+import { Reveal } from "../../components/ui/Reveal";
+import { SkillsMarquee } from "../../components/SkillsMarquee";
+import { SkillsSkeleton } from "../../components/Skeleton/Skeleton";
 import "./Skills.scss";
 
-const Skills = () => {
-  const [experiences, setExperiences] = useState([]);
-  const [skills, setSkills] = useState([]);
+const CATEGORIES = [
+  { key: "frontend", label: "Frontend", accent: "red", keywords: ["react", "next", "html", "css", "sass", "tailwind", "vue", "typescript", "javascript", "redux"] },
+  { key: "backend", label: "Backend", accent: "blue", keywords: ["node", "python", "api", "graphql", "mongo", "express"] },
+  { key: "mobile", label: "Mobile", accent: "yellow", keywords: ["native", "flutter", "mobile", "android", "ios"] },
+  { key: "tools", label: "Tools & Design", accent: "green", keywords: ["git", "figma", "sanity", "docker", "aws"] },
+];
 
-  useEffect(() => {
-    const query = '*[_type == "experiences"]';
-    const skillsQuery = '*[_type == "skills"]';
-    client.fetch(query).then((data) => setExperiences(data));
-    client.fetch(skillsQuery).then((data) => setSkills(data));
-  }, []);
+function categorizeSkill(name = "") {
+  const lower = name.toLowerCase();
+  for (const cat of CATEGORIES) {
+    if (cat.keywords.some((k) => lower.includes(k))) return cat.key;
+  }
+  return "tools";
+}
+
+function Skills() {
+  const { portfolio, loading } = usePortfolio();
+  const skills = useMemo(() => portfolio?.skills ?? [], [portfolio?.skills]);
+
+  const grouped = useMemo(() => {
+    const map = Object.fromEntries(CATEGORIES.map((c) => [c.key, []]));
+    skills.forEach((skill) => {
+      const key = categorizeSkill(skill.name);
+      map[key].push(skill);
+    });
+    return map;
+  }, [skills]);
+
+  const skillNames = useMemo(
+    () => skills.map((s) => s.name).filter(Boolean),
+    [skills]
+  );
 
   return (
-    <section aria-labelledby="skills-heading">
-      <h2 className="head-text" id="skills-heading">
-        Skills & Experiences
-      </h2>
-      <div className="app__skills-container">
-        <div className="app__skills-list" role="list" aria-label="Skill Icons">
-          {skills?.map((skill, index) => (
-            <div
-              className="app__skills-item app__flex"
-              key={skill.name + index}
-              role="listitem"
-              aria-label={`Skill: ${skill.name}`}
-            >
-              <div
-                className="app__flex skill-icon-wrapper"
-                style={{ backgroundColor: skill.bgColor }}
+    <section
+      id="skills"
+      className="skills section section--dark"
+      aria-labelledby="skills-title"
+    >
+      <div className="container">
+        <SectionHeader
+          index="05"
+          label="Skills"
+          funk="Stack goes brrr."
+          titleBefore="Tools of the"
+          highlight="trade"
+          highlightVariant="yellow"
+          subtitle="The stack I reach for when shipping fast, accessible, production-ready software."
+        />
+
+        <SkillsMarquee skillNames={skillNames} />
+
+        {loading && skills.length === 0 ? (
+          <SkillsSkeleton />
+        ) : (
+          <div className="skills__grid">
+            {CATEGORIES.map((cat, i) => (
+              <Reveal
+                key={cat.key}
+                className={`skills__card brutal-card skills__card--${cat.accent}`}
+                delay={i * 70}
               >
-                <img
-                  src={urlFor(skill.icon)}
-                  alt={`Icon of ${skill.name}`}
-                  loading="lazy"
-                  decoding="async"
-                  width="40"
-                  height="40"
-                  crossorigin="anonymous"
-                />
-              </div>
-              <p className="p-text">{skill.name}</p>
-            </div>
-          ))}
-        </div>
-        <div className="app__skills-exp" aria-label="Experience Timeline">
-          {experiences?.map((experience, expIndex) => (
-            <div className="app__skills-exp-item" key={experience.year + expIndex}>
-              <div className="app__skills-exp-year">
-                <p className="bold-text">{experience.year}</p>
-              </div>
-              <div className="app__skills-exp-works">
-                {experience?.works?.map((work, workIndex) => (
-                  <article
-                    className="app__skills-exp-work"
-                    key={`${work.name}-${workIndex}`}
-                    aria-label={`Work: ${work.name} at ${work.company}`}
-                  >
-                    <h3 className="bold-text">{work.name}</h3>
-                    <p className="p-text">{work.company}</p>
-                    <p className="p-desc">{work.desc}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+                <span className={`skills__accent skills__accent--${cat.accent}`} />
+                <p className="skills__label mono">{cat.label}</p>
+                <ul className="skills__list">
+                  {(grouped[cat.key].length ? grouped[cat.key] : []).map((skill) => (
+                    <li key={skill.name} className="skills__item">
+                      {skill.icon && (
+                        <img
+                          src={urlForImage(skill.icon, { width: 48, quality: 85 })}
+                          alt=""
+                          width="20"
+                          height="20"
+                          loading="lazy"
+                        />
+                      )}
+                      <span>{skill.name}</span>
+                    </li>
+                  ))}
+                  {!grouped[cat.key].length && (
+                    <li className="skills__item skills__item--empty mono">—</li>
+                  )}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
-};
+}
 
-export default Appwrap(
-  Motionwrap(Skills, "app__skills"),
-  "skills",
-  "app__whitebg"
-);
+export default Skills;

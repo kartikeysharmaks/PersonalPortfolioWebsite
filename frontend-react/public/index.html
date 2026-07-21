@@ -1,74 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Kartikey Sharma | Full Stack Developer - Web & Mobile Apps</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="author" content="Kartikey Sharma" />
-    <meta
-      name="description"
-      content="Portfolio of Kartikey Sharma - Full Stack Software Developer specializing in modern web and mobile application development. Skilled in React.js, Next.js, Node.js, Express.js, React Native, MongoDB, and Tailwind CSS. Available for freelance projects. Based in Haridwar, Uttarakhand, India. Works globally."
-    />
-    <meta
-      name="keywords"
-      content="Kartikey Sharma, Full Stack Developer, Software Developer, Web Developer, Mobile App Developer, React Developer, Next.js Developer, React Native Developer, Freelance Full Stack Developer, MERN Stack Developer, JavaScript Developer, Tailwind CSS Developer, Haridwar Developer, Uttarakhand, India"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://kartikeysharmaks.vercel.app/" />
-    <meta
-      property="og:title"
-      content="Kartikey Sharma | Full Stack Software Developer"
-    />
-    <meta
-      property="og:description"
-      content="Creating fast, responsive web and mobile apps using modern technologies like React, Next.js, Node.js, and React Native. Hire me for freelance or full-time work."
-    />
-    <meta
-      property="og:image"
-      content="https://kartikeysharmaks.vercel.app/og-image.png"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://kartikeysharmaks.vercel.app/" />
-    <meta
-      name="twitter:title"
-      content="Kartikey Sharma | Freelance Web & Mobile App Developer - full stack"
-    />
-    <meta
-      name="twitter:description"
-      content="Freelance Full Stack Developer skilled in React, Node, React Native, and MongoDB. Web and mobile app specialist."
-    />
-    <meta
-      name="twitter:image"
-      content="https://kartikeysharmaks.vercel.app/og-image.png"
-    />
-    <link rel="canonical" href="https://kartikeysharmaks.vercel.app/" />
-    <link rel="icon" href="%PUBLIC_URL%/ks.jfif" />
-    <link rel="apple-touch-icon" href="./cropped.webp" />
-    <link
-      rel="preload"
-      as="image"
-      href="../src/assets/cropped.webp"
-      type="image/webp"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script
-      defer
-      src="https://www.googletagmanager.com/gtag/js?id=G-JM4V2LW1ZH"
-    ></script>
-    <script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f2f2ec" />
+  <meta name="color-scheme" content="light" />
+
+  <title>Kartikey Sharma | Full Stack Developer</title>
+  <meta name="description"
+    content="Portfolio of Kartikey Sharma — Full Stack Software Developer building modern web and mobile apps with React, Next.js, Node.js, and React Native." />
+  <meta name="keywords"
+    content="Kartikey Sharma, Full Stack Developer, React Developer, Next.js, React Native, MERN, Freelance Developer" />
+  <meta name="author" content="Kartikey Sharma" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kartikeysharmaks.vercel.app/" />
+  <meta property="og:title" content="Kartikey Sharma | Full Stack Software Developer" />
+  <meta property="og:description"
+    content="Creating fast, responsive web and mobile apps using React, Next.js, Node.js, and React Native." />
+  <meta property="og:image" content="https://kartikeysharmaks.vercel.app/og-image.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kartikey Sharma | Full Stack Developer" />
+  <meta name="twitter:description" content="Freelance Full Stack Developer — React, Node, React Native." />
+  <meta name="twitter:image" content="https://kartikeysharmaks.vercel.app/og-image.png" />
+
+  <link rel="canonical" href="https://kartikeysharmaks.vercel.app/" />
+  <link rel="icon" href="%PUBLIC_URL%/ks.jfif" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/profilepic.webp" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <link rel="preload" as="image" href="%PUBLIC_URL%/profilepic-mobile.webp" type="image/webp" media="(max-width: 480px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="%PUBLIC_URL%/profilepic.webp" type="image/webp" media="(min-width: 481px)" fetchpriority="high" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" media="print" onload="this.media='all'" />
+  <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
+
+  <script>
+    window.addEventListener("load", function () {
+      var script = document.createElement("script");
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-JM4V2LW1ZH";
+      script.async = true;
+      document.head.appendChild(script);
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
+      window.gtag = gtag;
       gtag("js", new Date());
-      gtag("config", "G-JM4V2LW1ZH");
-    </script>
-  </head>
+      gtag("config", "G-JM4V2LW1ZH", { send_page_view: false });
+      gtag("event", "page_view");
+    });
+  </script>
+</head>
 
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
 </html>

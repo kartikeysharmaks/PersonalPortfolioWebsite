@@ -1,53 +1,68 @@
-import { useState, useEffect } from "react";
+import { usePortfolio } from "../../context/PortfolioContext";
+import { urlForImage } from "../../lib/sanity";
+import { SectionHeader } from "../../components/ui/SectionHeader";
+import { Reveal } from "../../components/ui/Reveal";
+import { AboutSkeleton } from "../../components/Skeleton/Skeleton";
 import "./About.scss";
-import { urlFor, client } from "../../client";
-import { Appwrap, Motionwrap } from "../../Wrapper";
+
+const CARD_COLORS = ["yellow", "green", "blue", "red"];
 
 function About() {
-  const [abouts, setAbouts] = useState([]);
-
-  useEffect(() => {
-    const query = '*[_type== "abouts"]';
-    client.fetch(query).then((data) => setAbouts(data));
-  }, []);
+  const { portfolio, loading } = usePortfolio();
+  const abouts = portfolio?.abouts ?? [];
 
   return (
-    <section aria-labelledby="about-heading" className="app__about-section">
-      <h2 id="about-heading" className="head-text">
-        I know that <span>Good Design</span>
-        <br />
-        means <span>Good Business</span>
-      </h2>
-      <div className="app__profiles" >
-        {abouts.map((about, index) => (
-          <article
-            className="app__profile-item"
-            key={about.title + index}
-            // role="listitem"
-            aria-label={`About ${about.title}`}
-          >
-            <img
-              src={urlFor(about.imgUrl)}
-              alt={`Illustration representing ${about.title}`}
-              loading="lazy"
-              decoding="async"
-              width="250"
-              height="250"
-              className="about-img"
-              crossorigin="anonymous"
-            />
-            <h3 className="bold-text">{about.title}</h3>
-            <p className="p-text">{about.description}</p>
-          </article>
-        ))}
+    <section id="about" className="about section" aria-labelledby="about-title">
+      <div className="container">
+        <SectionHeader
+          index="01"
+          label="About"
+          funk="Hot takes, cold code."
+          titleBefore="What I"
+          highlight="believe"
+          highlightVariant="green"
+          subtitle="Good design isn't decoration — it's how products earn trust, convert users, and scale with clarity."
+        />
+
+        {loading && abouts.length === 0 ? (
+          <AboutSkeleton />
+        ) : (
+          <div className="about__grid">
+            {abouts.map((item, index) => (
+              <Reveal
+                as="article"
+                key={`${item.title}-${index}`}
+                className={`about__card brutal-card about__card--${CARD_COLORS[index % CARD_COLORS.length]}`}
+                delay={index * 80}
+              >
+                <div className="about__card-top">
+                  <span className="about__icon" aria-hidden="true">
+                    ◆
+                  </span>
+                  <span className="about__index mono">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                {item.imgUrl && (
+                  <div className="about__img">
+                    <img
+                      src={urlForImage(item.imgUrl, { width: 400, quality: 82 })}
+                      alt=""
+                      loading="lazy"
+                      width="320"
+                      height="200"
+                    />
+                  </div>
+                )}
+                <h3 className="about__card-title display">{item.title}</h3>
+                <p className="about__card-desc">{item.description}</p>
+              </Reveal>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
 }
 
-export default Appwrap(
-  Motionwrap(About, "app__about"),
-  "about",
-  "app__whitebg"
-);
-
+export default About;
