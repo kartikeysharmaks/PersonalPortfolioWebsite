@@ -53,14 +53,21 @@ export const personSchema = {
     "https://www.threads.com/@kartikeysharmaks",  // Threads
     "https://www.youtube.com/@kartikeysharmaks",  // YouTube
     "https://www.behance.net/kartikeysharmaks",   // Behance
-    "https://www.producthunt.com/@kartikeysharmaks",
     "https://medium.com/@kartikeysharmaks",
     "https://dev.to/kartikeysharmaks",
     "https://hashnode.com/@kartikeysharmaks",
     "https://stackoverflow.com/users/21231774/kartikeysharmaks",
     "https://codepen.io/kartikeysharmaks",
     "https://codesandbox.io/u/kartikeysharmaks",
-    "https://www.pinterest.com/kartikeysharmaks/"
+    "https://www.pinterest.com/kartikeysharmaks/",
+    "https://leetcode.com/u/kartikeysharmaks/",
+    "https://www.freelancer.in/u/Kartikeysharmaks",
+    "https://www.reddit.com/user/Kartikeysharmaks",
+    "https://remoteok.com/@kartikeysharmaks",
+    "https://wellfound.com/u/kartikeysharmaks",
+    "https://www.facebook.com/kartikeysharmaks/",
+
+
   ],
   knowsAbout: [
     "React.js",
