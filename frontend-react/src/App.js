@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
+import { Analytics } from "@vercel/analytics/react";
 import Header from "./container/Header/Header";
 import { Navbar } from "./components";
 import {
@@ -71,6 +72,7 @@ function App() {
           <Footer />
         </Suspense>
       </main>
+      <Analytics />
     </>
   );
 }
