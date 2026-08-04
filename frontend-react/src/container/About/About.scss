@@ -1,6 +1,54 @@
 @import "../../styles/breakpoints";
 
 .about {
+  &__intro {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-5);
+
+    margin: var(--space-6) 0;
+    padding: var(--space-4) var(--space-5);
+
+    border: var(--border);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  &__intro-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--space-2) var(--space-3);
+
+    border: 2px solid var(--black);
+    background: var(--yellow);
+
+    font-size: var(--text-xs);
+    font-weight: 700;
+    line-height: 1;
+
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  &__intro-text {
+    margin: 0;
+
+    font-size: clamp(0.9rem, 1.05vw, 1rem);
+    line-height: var(--leading-relaxed);
+  }
+  &__intro-text strong {
+    font-size: 0.95em;
+    font-weight: 700;
+  }
+
+  &__intro-handle {
+    font-size: 0.88em;
+    font-weight: 700;
+    white-space: nowrap;
+  }
   &__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -20,9 +68,11 @@
     &--yellow {
       background: var(--yellow);
     }
+
     &--green {
       background: var(--green);
     }
+
     &--blue {
       background: var(--blue);
       color: var(--white);
@@ -30,11 +80,13 @@
       .about__card-desc {
         color: rgba(255, 255, 255, 0.88);
       }
+
       .about__index {
         border-color: var(--white);
         color: var(--white);
       }
     }
+
     &--red {
       background: var(--red);
       color: var(--white);
@@ -42,6 +94,7 @@
       .about__card-desc {
         color: rgba(255, 255, 255, 0.9);
       }
+
       .about__index {
         border-color: var(--white);
         color: var(--white);
@@ -62,6 +115,7 @@
   &__index {
     padding: var(--space-1) var(--space-2);
     border: 2px solid var(--black);
+
     font-weight: 700;
     font-size: var(--text-xs);
   }
@@ -73,6 +127,7 @@
     background: var(--white);
 
     img {
+      display: block;
       width: 100%;
       height: clamp(120px, 20vw, 160px);
       object-fit: cover;
@@ -80,13 +135,42 @@
   }
 
   &__card-title {
+    margin-top: var(--space-2);
+
     font-size: clamp(1.05rem, 2vw, 1.3rem);
     line-height: var(--leading-snug);
-    margin-top: var(--space-2);
   }
 
   &__card-desc {
     font-size: var(--text-sm);
     line-height: var(--leading-relaxed);
+  }
+
+  // --------------------------------------------------
+  // Responsive intro
+  // --------------------------------------------------
+
+  @include md {
+    &__intro {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+
+      padding: var(--space-4);
+    }
+
+    &__intro-label {
+      justify-self: start;
+    }
+  }
+
+  @include sm {
+    &__intro {
+      margin: var(--space-5) 0;
+      padding: var(--space-3);
+    }
+
+    &__intro-text {
+      font-size: var(--text-sm);
+    }
   }
 }

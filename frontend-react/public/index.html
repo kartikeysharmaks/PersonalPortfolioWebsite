@@ -1,75 +1,166 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f2f2ec" />
-  <meta name="color-scheme" content="light" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Kartikey Sharma | Freelance Full Stack Developer | React, Next.js & React Native</title>
-  <meta name="description"
-    content="Kartikey Sharma is a Freelance Full Stack Developer from India specializing in React.js, Next.js, Node.js, React Native, TypeScript, MongoDB and Sanity CMS. Building high-performance websites, web applications and mobile apps for startups and businesses worldwide." />
-  <meta name="keywords"
-    content="Kartikey Sharma, Full Stack Developer, React Developer, Next.js, React Native, MERN, Freelance Developer" />
-  <meta name="author" content="Kartikey Sharma" />
+    <meta name="theme-color" content="#f2f2ec" />
 
-  <meta property="og:site_name" content="Kartikey Sharma" />
-  <meta property="og:locale" content="en_IN" />
+    <meta name="color-scheme" content="light" />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.kartikeysharmaks.in/" />
-  <meta property="og:title" content="Kartikey Sharma | Freelance Full Stack Developer" />
-  <meta property="og:description"
-    content="Creating fast, responsive web and mobile apps using React, Next.js, Node.js, and React Native." />
-  <meta property="og:image" content="https://www.kartikeysharmaks.in/og-image.png" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kartikey Sharma | Full Stack Developer" />
-  <meta name="twitter:description" content="Freelance Full Stack Developer — React, Node, React Native." />
-  <meta name="twitter:image" content="https://www.kartikeysharmaks.in/og-image.png" />
+    <title>
+      Kartikey Sharma (@kartikeysharmaks) | Software Engineer (Full Stack developer) & Travel Creator
+    </title>
 
-  <link rel="canonical" href="https://www.kartikeysharmaks.in/" />
-  <link rel="icon" href="%PUBLIC_URL%/ks.jfif" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/profilepic.webp" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta
+      name="description"
+      content="Official website of Kartikey Sharma (@kartikeysharmaks), a Software Engineer, Full Stack Developer and Travel Content Creator from Haridwar, Uttarakhand, India."
+    />
+    <meta name="author" content="Kartikey Sharma" />
+    <link rel="canonical" href="https://www.kartikeysharmaks.in/" />
+    <meta property="og:site_name" content="Kartikey Sharma" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://www.kartikeysharmaks.in/" />
+    <meta
+      property="og:title"
+      content="Kartikey Sharma (@kartikeysharmaks) | Software Engineer & Travel Creator"
+    />
+    <meta
+      property="og:description"
+      content="Official website of Kartikey Sharma (@kartikeysharmaks), a Software Engineer, Full Stack Developer and Travel Content Creator from Haridwar, Uttarakhand, India."
+    />
+    <meta
+      property="og:image"
+      content="https://www.kartikeysharmaks.in/og-image.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://www.kartikeysharmaks.in/og-image.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="Kartikey Sharma (@kartikeysharmaks) — Software Engineer and Travel Content Creator"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@Kartikey0302" />
+    <meta
+      name="twitter:title"
+      content="Kartikey Sharma (@kartikeysharmaks) | Software Engineer (Full Stack developer) & Travel Creator"
+    />
+    <meta
+      name="twitter:description"
+      content="Official website of Kartikey Sharma (@kartikeysharmaks), a Software Engineer, Full Stack Developer and Travel Content Creator from Haridwar, Uttarakhand, India."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.kartikeysharmaks.in/og-image.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Kartikey Sharma (@kartikeysharmaks)"
+    />
+    <link rel="icon" href="%PUBLIC_URL%/ks.jfif" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/profilepic.webp" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link
+      rel="preload"
+      as="image"
+      href="%PUBLIC_URL%/profilepic-mobile.webp"
+      type="image/webp"
+      media="(max-width: 480px)"
+      fetchpriority="high"
+    />
 
-  <link rel="preload" as="image" href="%PUBLIC_URL%/profilepic-mobile.webp" type="image/webp" media="(max-width: 480px)"
-    fetchpriority="high" />
-  <link rel="preload" as="image" href="%PUBLIC_URL%/profilepic.webp" type="image/webp" media="(min-width: 481px)"
-    fetchpriority="high" />
+    <link
+      rel="preload"
+      as="image"
+      href="%PUBLIC_URL%/profilepic.webp"
+      type="image/webp"
+      media="(min-width: 481px)"
+      fetchpriority="high"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap"
-    media="print" onload="this.media='all'" />
-  <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-  <script>
-    window.addEventListener("load", function () {
-      var script = document.createElement("script");
-      script.src = "https://www.googletagmanager.com/gtag/js?id=G-ZL1770CXZS";
-      script.async = true;
-      document.head.appendChild(script);
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      window.gtag = gtag;
-      gtag("js", new Date());
-      gtag("config", "G-ZL1770CXZS", { send_page_view: false });
-      gtag("event", "page_view");
-    });
-  </script>
-</head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
-</body>
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap"
+    />
 
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap"
+      media="print"
+      onload="this.media = 'all'"
+    />
+
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap"
+      />
+    </noscript>
+
+    <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
+
+    <script>
+      window.addEventListener("load", function () {
+        var script = document.createElement("script");
+
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-ZL1770CXZS";
+
+        script.async = true;
+
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+
+        window.gtag = gtag;
+
+        gtag("js", new Date());
+
+        gtag("config", "G-ZL1770CXZS", {
+          send_page_view: false,
+        });
+
+        gtag("event", "page_view");
+      });
+    </script>
+  </head>
+
+  <body>
+    <noscript>
+      <main>
+        <h1>Kartikey Sharma (@kartikeysharmaks)</h1>
+
+        <p>
+          Software Engineer, Full Stack Developer and Travel Content Creator
+          from Haridwar, Uttarakhand, India.
+        </p>
+
+        <p>
+          This is the official website of Kartikey Sharma, also known online as
+          @kartikeysharmaks.
+        </p>
+
+        <p>Please enable JavaScript to view the complete portfolio.</p>
+      </main>
+    </noscript>
+
+    <div id="root"></div>
+  </body>
 </html>

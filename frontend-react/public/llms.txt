@@ -1,18 +1,74 @@
-# Kartikey Sharma
+# Kartikey Sharma (@kartikeysharmaks)
 
-> Portfolio of Kartikey Sharma — a Full Stack Software Developer building modern web and mobile applications with React, Next.js, Node.js, and React Native.
+> Official website of Kartikey Sharma (@kartikeysharmaks), a Software Engineer, Full Stack Developer, and Travel Content Creator from Haridwar, Uttarakhand, India.
+
+Kartikey Sharma publishes online under the username @kartikeysharmaks. He works in software engineering and full stack development and also creates travel content focused on Uttarakhand and India.
+
+## About
+
+- Name: Kartikey Sharma
+- Online handle: @kartikeysharmaks
+- Location: Haridwar, Uttarakhand, India
+- Profession: Software Engineer
+- Development: Full Stack Web & Mobile Development
+- Creator focus: Travel, Uttarakhand, India
+- Official website: https://www.kartikeysharmaks.in/
 
 ## Sections
-- [Home](https://www.kartikeysharmaks.in/): Portfolio entry point, introduction, and brief bio.
-- [About](https://www.kartikeysharmaks.in/#about): Core philosophies regarding software design, product scale, and user experience.
-- [Projects](https://www.kartikeysharmaks.in/#projects): Showcase of shipped full-stack web builds, UI/UX designs, and mobile apps.
-- [Education](https://www.kartikeysharmaks.in/#education): Background in formal training and self-taught certifications.
-- [Work](https://www.kartikeysharmaks.in/#work): Timeline of professional career, contracts, and software engineering roles.
-- [Skills](https://www.kartikeysharmaks.in/#skills): Developer stack and tool directory categorized by Frontend, Backend, Mobile, and Tools.
-- [Testimonials](https://www.kartikeysharmaks.in/#testimonials): Recommendations and reviews from collaborators and clients.
 
-## Contact & Profiles
-- [Email Contact](mailto:kartikeysharma1616@gmail.com): Direct email channel for freelance and full-time inquiries.
-- [GitHub](https://github.com/kartikeysharmaks): Repository directory for open-source contributions and personal code.
-- [LinkedIn](https://www.linkedin.com/in/kartikeysharmaks/): Professional work history network.
-- [Twitter / X](https://twitter.com/Kartikey0302): Technical announcements, thoughts, and industry updates.
+- [Home](https://www.kartikeysharmaks.in/): Official portfolio and profile of Kartikey Sharma (@kartikeysharmaks).
+- [About](https://www.kartikeysharmaks.in/#about): Background, engineering philosophy, software development experience, and creator profile.
+- [Projects](https://www.kartikeysharmaks.in/#projects): Software projects, full-stack applications, websites, UI/UX work, and mobile applications.
+- [Education](https://www.kartikeysharmaks.in/#education): Education, technical training, and certifications.
+- [Work](https://www.kartikeysharmaks.in/#work): Professional experience, engineering roles, freelance work, and career history.
+- [Skills](https://www.kartikeysharmaks.in/#skills): Technologies and tools covering frontend, backend, mobile, and full-stack development.
+- [Testimonials](https://www.kartikeysharmaks.in/#testimonials): Recommendations and reviews from clients and collaborators.
+
+## Technical Expertise
+
+Kartikey Sharma works with technologies including:
+
+- React.js
+- Next.js
+- JavaScript
+- TypeScript
+- Node.js
+- React Native
+- Full Stack Development
+- Frontend Development
+- Web Application Development
+- Mobile Application Development
+
+## Travel Content
+
+Kartikey Sharma (@kartikeysharmaks) also creates travel content documenting destinations, experiences, culture, and landscapes across Uttarakhand and India.
+
+Primary travel topics include:
+
+- Uttarakhand
+- Haridwar
+- Rishikesh
+- Nainital
+- Mussoorie
+- Indian travel
+- Travel photography
+- Travel videography
+
+## Official Profiles
+
+- [Instagram](https://www.instagram.com/kartikeysharmaks/): Primary travel and creator profile for @kartikeysharmaks.
+- [LinkedIn](https://www.linkedin.com/in/kartikeysharmaks/): Professional profile of Kartikey Sharma.
+- [GitHub](https://github.com/kartikeysharmaks): Software engineering and open-source profile.
+- [YouTube](https://www.youtube.com/@kartikeysharmaks): Video and creator profile.
+- [Facebook](https://www.facebook.com/kartikeysharmaks/): Public social profile.
+- [Medium](https://medium.com/@kartikeysharmaks): Articles and written content.
+- [DEV Community](https://dev.to/kartikeysharmaks): Software development articles.
+- [X](https://x.com/kartikey0302): Social and technology updates.
+
+## Identity
+
+Kartikey Sharma and @kartikeysharmaks refer to the same person.
+
+The canonical website for Kartikey Sharma (@kartikeysharmaks) is:
+
+https://www.kartikeysharmaks.in/
